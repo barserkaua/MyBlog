@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Post create {% endblock %}
+
+{% block content %}
+
+
+current user: {{user.id}}
+post id: {{article.user.id}}
+    {% if request.user.is_authenticated %}
+        {% if user.id == article.user.id %}
+            <div>
+                <h1>Form to create post</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.title }}<br>
+                        {{ form.anons }}<br>
+                        {{ form.full_text }}<br>
+                        {{ form.date }}<br>
+                        {{ form.user }}<br>
+                        <span>{{ error }}</span>
+                        <button class="btn btn-success" type="submit">Create post</button>
+                    </form>
+            </div>
+            {% else %}
+            <h1>You`re not allowed here! And you know this...</h1>
+
+        {% endif %}
+
+    {% endif %}
+    <!-- I use this to get username to my ArticleForm -->
+    <script>
+        var name = "{{ user.username }}";
+        document.getElementById("user").value = name;
+    </script>
+
+{% endblock %}

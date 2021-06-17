@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}  {% endblock %}
+
+{% block content %}
+
+    <div class="fetures">
+        <h1>Delete post</h1>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-success" type="submit">Delete post</button>
+            </form>
+
+    </div>
+
+{% endblock %}

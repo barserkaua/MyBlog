@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} My posts {% endblock %}
+
+{% block content %}
+
+    <div>
+        <h1>Posts on the site</h1>
+            {% if posts %}
+                {% for el in posts %}
+                <div class="alert alert-warning">
+                    <h3>{{ el.title }}</h3>
+                    <p>{{ el.anons }}</p>
+                    <p>{{ el.user }}</p>
+                    <p>{{ el.full_text }}</p>
+                    <a href="{% url 'post-detail' el.id %}" class="btn btn-warning">More</a>
+                </div>
+            {% endfor %}
+            {% else %}
+
+                <p>No entries</p>
+            {% endif %}
+
+        {# Коментарій #}
+    </div>
+
+{% endblock %}

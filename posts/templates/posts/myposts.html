@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} My posts {% endblock %}
+
+{% block content %}
+current user: {{user.id}}
+post id: {{article.user.id}}
+
+    {% if request.user.is_authenticated %}
+    <div>
+        <h1>Posts on the site</h1>
+            {% if posts %}
+                {% for el in posts %}
+                    {% if user.id == el.user.id %}
+                <div class="alert alert-warning">
+                    <h3>{{ el.title }}</h3>
+                    <p>{{ el.anons }}</p>
+                    <p>{{ el.user }}</p>
+                    <p>{{ el.full_text }}</p>
+                    <a href="{% url 'post-detail' el.id %}" class="btn btn-warning">More</a>
+                </div>
+                {% endif %}
+            {% endfor %}
+            {% else %}
+
+                <p>No entries</p>
+            {% endif %}
+
+    {% else %}
+        <h1>If you want to open this page<br>Please Sign up or login</h1>
+        <a href="{% url 'signup' %}" class="nav-link text-uppercase font-weight-bold">Signup</a>
+        <a href="{% url 'login' %}" class="nav-link text-uppercase font-weight-bold px-3">Login</a>
+
+
+    {% endif %}
+        {# Коментарій #}
+    </div>
+
+{% endblock %}

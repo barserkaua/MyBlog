@@ -10,22 +10,24 @@
     {% if request.user.is_authenticated %}
             <div>
                 <h1>Form to create post</h1>
-                    <form method="post">
+                    <form method="POST">
                         {% csrf_token %}
                         {{ form.title }}<br>
                         {{ form.anons }}<br>
                         {{ form.full_text }}<br>
                         {{ form.date }}<br>
                         {{ form.user }}<br>
-                        <span>{{ error }}</span>
-                        <button class="btn btn-success" type="submit">Create post</button>
+                     <span>{{ error }}</span>
+                        <button class="btn btn-success">Create post</button>
                     </form>
             </div>
+    <!-- I use JS to get username to my ArticleForm -->
+            <script>
+                var name = "{{ user.id }}";
+                document.getElementById("user").value = name;
+            </script>
     {% endif %}
-    <!-- I use this to get username to my ArticleForm -->
-    <script>
-        var name = "{{ user.username }}";
-        document.getElementById("user").value = name;
-    </script>
+
+
 
 {% endblock %}

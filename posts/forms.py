@@ -9,25 +9,9 @@ class ArticleForm(ModelForm):
         model = Article
         fields = ['title', 'anons', 'full_text', 'date',  'user']
         widgets = {
-            "title": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Name state'
-            }),
-            "anons": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Anons',
-            }),
-            "date": DateTimeInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Date publish',
-            }),
-            "user": TextInput(attrs={
-                'class': 'form-control',
-                'value': 'Username',
-                'id': 'user',
-            }),
-            "full_text": Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'Some text...',
-            }),
-        }
+            "title": TextInput(attrs={'class': 'form-control', 'placeholder': 'Name state'}),
+            "anons": TextInput(attrs={'class': 'form-control', 'placeholder': 'Anons'}),
+            "date": DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'Date publish'}),
+            "user": TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'user', 'type': 'hidden'}),
+            "full_text": Textarea(attrs={'class': 'form-control', 'placeholder': 'Some text...'}),
+                }

@@ -7,15 +7,16 @@
 
 {% block content %}
 current user: {{user.id}}
-post id: {{article.user.id}}
-tracking id: {{tracking.id}}
+tracking first id: {{first_user}}
+last id: {{last_user}}
 
     {% if request.user.is_authenticated %}
     <div>
         <h1>Posts on the site</h1>
             {% if posts %}
                 {% for el in posts %}
-                    {% if user.id == el.user.id %}
+
+                    {% if user.id == el.user.id or first_user == el.user.id%}
                 <div class="alert alert-warning">
                     <h3>{{ el.title }}</h3>
                     <p>{{ el.anons }}</p>

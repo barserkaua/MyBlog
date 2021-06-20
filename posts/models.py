@@ -3,6 +3,9 @@ from django.db import models
 
 
 # Post model in db
+from main.models import RegisteredUser
+
+
 class Article(models.Model):
     title = models.CharField('Title', max_length=50)
     anons = models.CharField('Anons', max_length=250)
